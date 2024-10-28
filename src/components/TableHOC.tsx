@@ -1,18 +1,22 @@
-import { useTable, Column, TableOptions } from "react-table";
+import { useTable, Column, TableOptions,useSortBy,usePagination } from "react-table";
 
 function TableHOC<T extends Object>(
   columns: Column<T>[],
   data: T[],
   containerClassName: string,
-  heading: string
+  heading: string,
+  showPagination:boolean = false
 ) {
   return function HOC() {
     const options: TableOptions<T> = {
       columns,
       data,
+      initialState:{
+        pageSize:6,
+      }
     };
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable(options);
+    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
+      useTable(options,useSortBy,usePagination);
     return (
       <div className={containerClassName}>
         <h2 className="heading">{heading}</h2>
@@ -21,15 +25,17 @@ function TableHOC<T extends Object>(
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((columns) => (
-                  <th {...columns.getHeaderProps()}>
+                  <th {...columns.getHeaderProps(columns.getSortByToggleProps())}>
                     {columns.render("Header")}
+
+                    {columns.isSorted && <span>{columns.isSortedDesc?"🔽":"🔼"}</span> }
                   </th>
                 ))}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps}>
-            {rows.map((row) => {
+            {page.map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
@@ -41,6 +47,10 @@ function TableHOC<T extends Object>(
             })}
           </tbody>
         </table>
+
+        {
+          showPagination ?
+        }
       </div>
     );
   };
