@@ -41,68 +41,71 @@ const img =
 
 const img2 = "https://m.media-amazon.com/images/I/514T0SvwkHL._SL1500_.jpg";
 
-const arr: TableDataType[] = [ {
-  photo: <img src={img} alt="Shoes" />,
-  name: "Puma Shoes Air Jordan Cook Nigga 2023",
-  price: 690,
-  stock: 3,
-  action: <Link to="/admin/product/sajknaskd">Manage</Link>,
-},
+const arr: TableDataType[] = [
+  {
+    photo: <img src={img} alt="Shoes" />,
+    name: "Puma Shoes Air Jordan Cook Nigga 2023",
+    price: 690,
+    stock: 3,
+    action: <Link to="/admin/product/sajknaskd">Manage</Link>,
+  },
 
-{
-  photo: <img src={img2} alt="Shoes" />,
-  name: "Macbook",
-  price: 232223,
-  stock: 213,
-  action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
-},
-{
-  photo: <img src={img} alt="Shoes" />,
-  name: "Puma Shoes Air Jordan Cook Nigga 2023",
-  price: 690,
-  stock: 3,
-  action: <Link to="/admin/product/sajknaskd">Manage</Link>,
-},
+  {
+    photo: <img src={img2} alt="Shoes" />,
+    name: "Macbook",
+    price: 232223,
+    stock: 213,
+    action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
+  },
+  {
+    photo: <img src={img} alt="Shoes" />,
+    name: "Puma Shoes Air Jordan Cook Nigga 2023",
+    price: 690,
+    stock: 3,
+    action: <Link to="/admin/product/sajknaskd">Manage</Link>,
+  },
 
-{
-  photo: <img src={img2} alt="Shoes" />,
-  name: "Macbook",
-  price: 232223,
-  stock: 213,
-  action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
-},
-{
-  photo: <img src={img} alt="Shoes" />,
-  name: "Puma Shoes Air Jordan Cook Nigga 2023",
-  price: 690,
-  stock: 3,
-  action: <Link to="/admin/product/sajknaskd">Manage</Link>,
-},
+  {
+    photo: <img src={img2} alt="Shoes" />,
+    name: "Macbook",
+    price: 232223,
+    stock: 213,
+    action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
+  },
+  {
+    photo: <img src={img} alt="Shoes" />,
+    name: "Puma Shoes Air Jordan Cook Nigga 2023",
+    price: 690,
+    stock: 3,
+    action: <Link to="/admin/product/sajknaskd">Manage</Link>,
+  },
 
-{
-  photo: <img src={img2} alt="Shoes" />,
-  name: "Macbook",
-  price: 232223,
-  stock: 213,
-  action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
-},
-{
-  photo: <img src={img2} alt="Shoes" />,
-  name: "Macbook",
-  price: 232223,
-  stock: 213,
-  action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
-},];
+  {
+    photo: <img src={img2} alt="Shoes" />,
+    name: "Macbook",
+    price: 232223,
+    stock: 213,
+    action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
+  },
+  {
+    photo: <img src={img2} alt="Shoes" />,
+    name: "Macbook",
+    price: 232223,
+    stock: 213,
+    action: <Link to="/admin/product/sdaskdnkasjdn">Manage</Link>,
+  },
+];
 const Products: React.FC = () => {
   const [data] = useState<TableDataType[]>(arr);
 
-  const Table = useCallback(   
-      TableHOC<TableDataType>(
-        columns,
-        data,
-        "dashboardProductTable",
-        "Products"
-      ),
+  const Table = useCallback(
+    TableHOC<TableDataType>(
+      columns,
+      data,
+      "dashboardProductTable",
+      "Products",
+      true
+    ),
     []
   );
   return (
@@ -112,8 +115,8 @@ const Products: React.FC = () => {
         <AdminSidebar />
         <main>{Table()}</main>
 
-        <Link  to={'/admin/products/new'} className="addProductBtn">
-        <FaPlus></FaPlus>
+        <Link to={"/admin/products/new"} className="addProductBtn">
+          <FaPlus></FaPlus>
         </Link>
       </div>
     </>

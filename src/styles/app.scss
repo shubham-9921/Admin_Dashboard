@@ -142,7 +142,7 @@ a {
   }
 }
 
-.table-pagination {
+.tablePagination {
   @include flex;
   padding: 2rem;
   > button {
@@ -156,6 +156,7 @@ a {
     &:disabled {
       background-color: rgba(0, 115, 255, 0.1);
       cursor: not-allowed;
+      color: #333333;
     }
   }
 }
